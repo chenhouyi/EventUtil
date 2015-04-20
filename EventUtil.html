@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="EventUtil.js"></script>
+</head>
+<body>
+	<button id="myButton">Click me</button>
+	<input id="myInput"></input>
+	<script type="text/javascript">
+		var myButton = document.getElementById('myButton'),
+			myInput = document.getElementById('myInput');
+		var handler1 = function(event) {
+			event = EventUtil.getEvent(event);
+			var target = EventUtil.getTarget(event);
+			var relatedTarget = EventUtil.getRelatedTarget(event);
+			console.log(target);
+			console.log(relatedTarget);
+		};
+		var handler2 = function(event) {
+			event = EventUtil.getEvent(event);
+			var button = EventUtil.getButton(event);
+			console.log(event);
+		}
+		var handler3 = function(event) {
+			event = EventUtil.getEvent(event);
+			console.log(event);
+			alert('123');
+		}
+		EventUtil.addHandler(myButton, 'click', handler2);
+		EventUtil.addHandler(myInput, 'keypress', handler3);
+	</script>
+</body>
+</html>
